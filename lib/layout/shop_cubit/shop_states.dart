@@ -24,3 +24,7 @@ class ReloadImagesState extends ShopStates {}
 
 class GetUserDataSuccessState extends ShopStates {}
 class GetUserDataErrorState extends ShopStates {}
+
+class UpdateUserDataLoadingState extends ShopStates {}
+class UpdateUserDataSuccessState extends ShopStates {}
+class UpdateUserDataErrorState extends ShopStates {}

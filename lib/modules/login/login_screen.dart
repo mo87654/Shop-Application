@@ -28,8 +28,6 @@ class LoginScreen extends StatelessWidget {
                   CachHelper.savaData(key: 'token', value: state.loginData.data?.token).
                   then((value){
                     token = state.loginData.data?.token;
-                    ShopCubit.get(context).getUserData();
-                    ShopCubit.get(context).getFavorites();
                     navigateToAndReplace(context,ShopLayout());
 
                   });

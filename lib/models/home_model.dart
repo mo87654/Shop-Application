@@ -8,16 +8,24 @@ class HomeModel {
   }
 }
 class HomeDataModel {
-  List<BannersModel>? banners = [];
-  List<ProductsModel>? products = [];
+  List<BannersModel>? banners;
+  List<ProductsModel>? products;
   HomeDataModel.formJson(Map<String,dynamic> json)
   {
-    json['banners'].forEach((element){
-      banners?.add(BannersModel.fromJson(element));
-    });
-    json['products'].forEach((element){
-      products?.add(ProductsModel.fromJson(element));
-    });
+    if(json['banners']!=null)
+      {
+        banners = <BannersModel> [];
+        json['banners'].forEach((element){
+          banners?.add(BannersModel.fromJson(element));
+        });
+      }
+    if(json['products'] !=null)
+      {
+        products = <ProductsModel>[];
+        json['products'].forEach((element){
+          products?.add(ProductsModel.fromJson(element));
+        });
+      }
 
   }
 }

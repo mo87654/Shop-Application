@@ -22,7 +22,7 @@ class CategoriesScreen extends StatelessWidget {
                 child: Row(
                   children: [
                     Image(
-                      image: NetworkImage('${cateModel.data?.data[index].image}'),
+                      image: NetworkImage('${cateModel.data?.data?[index].image}'),
                       height: 80,
                       width: 80,
                       errorBuilder: (context, error, stackTrace) {
@@ -33,7 +33,7 @@ class CategoriesScreen extends StatelessWidget {
                       width: 20,
                     ),
                     Text(
-                      '${cateModel.data?.data[index].name}',
+                      '${cateModel.data?.data?[index].name}',
                       style: TextStyle(
                           fontSize: 20
                       ),
@@ -51,7 +51,7 @@ class CategoriesScreen extends StatelessWidget {
                 color: Colors.grey[300],
                 margin: EdgeInsets.symmetric(horizontal: 15),
               ),
-              itemCount: cateModel.data!.data.length
+              itemCount: cateModel.data!.data!.length
           );
         },
     );

@@ -25,6 +25,7 @@ void main() async {
   Widget startWidget;
   bool? onBoarding = CachHelper.getData(key: 'onBoarding');
   token = CachHelper.getData(key: 'token');
+  print(token);
 
   if (onBoarding != null) {
     if (token != null)
@@ -46,57 +47,45 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (BuildContext context) => ShopCubit()
-        ..getHomeData()
-        ..getCateData()
-        ..getFavorites()
-        ..getUserData(),
-      child: BlocConsumer<ShopCubit, ShopStates>(
-        listener: (context, state) {},
-        builder: (context, state) {
-          return MaterialApp(
-            theme: ThemeData(
-              appBarTheme: AppBarTheme(
-                  titleTextStyle: TextStyle(
-                    color: Colors.black,
-                  ),
-                  backgroundColor: Colors.white,
-                  elevation: 0,
-                  systemOverlayStyle: SystemUiOverlayStyle(
-                      statusBarColor: Colors.white,
-                      statusBarIconBrightness: Brightness.dark,
-                  )
-              ),
-              scaffoldBackgroundColor: Colors.white,
-              primarySwatch: defaultColor,
-              bottomNavigationBarTheme: BottomNavigationBarThemeData(
-                selectedItemColor: defaultColor,
-                unselectedItemColor: Colors.grey,
-                showUnselectedLabels: true,
-                showSelectedLabels: true,
-                backgroundColor: Colors.white,
-                type: BottomNavigationBarType.fixed,
-                selectedIconTheme: IconThemeData(
-                  size: 25
-                ),
-                selectedLabelStyle: TextStyle(
-                  fontSize: 12
-                ),
-                unselectedIconTheme: IconThemeData(
-                    size: 25
-                ),
-                unselectedLabelStyle:  TextStyle(
-                    fontSize: 12
-                ),
-              )
+    return MaterialApp(
+      theme: ThemeData(
+        appBarTheme: AppBarTheme(
+            titleTextStyle: TextStyle(
+              color: Colors.black,
             ),
-            title: 'My Fucking App',
-            home: startWidget,
-            debugShowCheckedModeBanner: false,
-          );
-        },
+            backgroundColor: Colors.white,
+            elevation: 0,
+            systemOverlayStyle: SystemUiOverlayStyle(
+                statusBarColor: Colors.white,
+                statusBarIconBrightness: Brightness.dark,
+            )
+        ),
+        scaffoldBackgroundColor: Colors.white,
+        primarySwatch: defaultColor,
+        bottomNavigationBarTheme: BottomNavigationBarThemeData(
+          selectedItemColor: defaultColor,
+          unselectedItemColor: Colors.grey,
+          showUnselectedLabels: true,
+          showSelectedLabels: true,
+          backgroundColor: Colors.white,
+          type: BottomNavigationBarType.fixed,
+          selectedIconTheme: IconThemeData(
+            size: 25
+          ),
+          selectedLabelStyle: TextStyle(
+            fontSize: 12
+          ),
+          unselectedIconTheme: IconThemeData(
+              size: 25
+          ),
+          unselectedLabelStyle:  TextStyle(
+              fontSize: 12
+          ),
+        )
       ),
+      title: 'My Fucking App',
+      home: startWidget,
+      debugShowCheckedModeBanner: false,
     );
   }
 }

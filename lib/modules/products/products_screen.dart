@@ -17,7 +17,8 @@ class ProductsScreen extends StatelessWidget {
         builder: (context, state) {
           HomeModel? homeModel = ShopCubit.get(context).homeModel;
           CategoryModel? catemodel = ShopCubit.get(context).categoryModel;
-          return homeModel == null ?
+          return homeModel == null
+          || ShopCubit.get(context).isFavorite.isEmpty?
           Center(
             child: CircularProgressIndicator(),
           ):
@@ -56,11 +57,11 @@ class ProductsScreen extends StatelessWidget {
                   height: 100,
                   padding: EdgeInsets.symmetric(horizontal: 10),
                   child: ListView.separated(
-                      itemBuilder: (context, index) => cateItemBuilder(catemodel.data?.data[index]),
+                      itemBuilder: (context, index) => cateItemBuilder(catemodel.data?.data?[index]),
                       separatorBuilder: (context, index) => SizedBox(
                         width: 10,
                       ),
-                      itemCount: catemodel!.data!.data.length,
+                      itemCount: catemodel!.data!.data!.length,
                     scrollDirection: Axis.horizontal,
                   ),
                 ),
