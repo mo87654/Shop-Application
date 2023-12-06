@@ -31,8 +31,6 @@ class RegisterScreen extends StatelessWidget {
               CachHelper.savaData(key: 'token', value: state.registerData.data?.token).
               then((value){
                 token = state.registerData.data?.token;
-                ShopCubit.get(context).getUserData();
-                ShopCubit.get(context).getFavorites();
                 navigateToAndReplace(context,ShopLayout());
 
               });

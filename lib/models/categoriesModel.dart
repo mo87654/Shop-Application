@@ -9,13 +9,17 @@ class CategoryModel{
 }
 class CategoryDataModel{
   int? currentPage;
-  List <DataModel> data=[];
+  List <DataModel>? data;
   CategoryDataModel.fromJson(Map<String,dynamic> json)
   {
     currentPage = json['current_page'];
-    json['data'].forEach((element){
-      data.add(DataModel.fromJson(element));
-    });
+    if(json['data'] != null)
+      {
+        data = <DataModel>[];
+        json['data'].forEach((element){
+          data?.add(DataModel.fromJson(element));
+        });
+      }
   }
 }
 class DataModel{

@@ -37,6 +37,7 @@ class ShopCubit extends Cubit<ShopStates> {
   Map<int, bool> isFavorite = {};
 
   void getHomeData() {
+    isFavorite.clear();
     emit(HomeDataLoadingState());
     DioHelper.getData(url: HOME, token: token).then((value) {
       homeModel = HomeModel.fromJson(value?.data);
@@ -109,6 +110,31 @@ class ShopCubit extends Cubit<ShopStates> {
     }).catchError((error) {
       print(error.toString());
       emit(GetUserDataErrorState());
+    });
+  }
+
+  void updateUserData({
+      required String name,
+      required String email,
+      required String phone,
+}) {
+    emit(UpdateUserDataLoadingState());
+    DioHelper.putData(
+      url: UPDATE_PROFILE,
+      token: token,
+      data: {
+        'name':name,
+        'email':email,
+        'phone':phone,
+      }
+    )?.then((value) {
+      userModel = LoginModel.fromJson(value.data);
+      print(userModel?.message);
+      print(userModel?.data?.phone);
+      emit(UpdateUserDataSuccessState());
+    }).catchError((error) {
+      print(error.toString());
+      emit(UpdateUserDataErrorState());
     });
   }
 }
